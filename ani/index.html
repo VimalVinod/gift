@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three Years, One Forever — Vineetha ❤️ Udai</title>
+  <title>Three Years, One Forever </title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -320,21 +320,25 @@
       font-style: italic;
     }
 
-    /* SCENE 4: Envelope */
+    /* SCENE 4: Envelope — responsive, layered, and spaced to prevent overlap */
     .envelope-wrapper {
       position: relative;
       width: 280px;
-      height: 200px;
-      margin: 20px auto 30px auto;
+      max-width: 100%;
+      height: 250px;
+      margin: 28px auto 22px;
       cursor: pointer;
       perspective: 1000px;
+      isolation: isolate;
+      -webkit-tap-highlight-color: transparent;
+      outline-offset: 8px;
     }
 
     .envelope-base {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 280px;
+      width: 100%;
       height: 170px;
       background: #F472B6;
       border-radius: 12px;
@@ -353,6 +357,7 @@
       border-width: 0 140px 105px 140px;
       border-color: transparent transparent #EC4899 transparent;
       z-index: 4;
+      pointer-events: none;
     }
 
     .envelope-pocket-left {
@@ -365,6 +370,7 @@
       border-width: 85px 0 85px 140px;
       border-color: transparent transparent transparent #F472B6;
       z-index: 4;
+      pointer-events: none;
     }
 
     .envelope-pocket-right {
@@ -377,11 +383,12 @@
       border-width: 85px 140px 85px 0;
       border-color: transparent #F472B6 transparent transparent;
       z-index: 4;
+      pointer-events: none;
     }
 
     .envelope-flap {
       position: absolute;
-      top: 30px;
+      top: 80px;
       left: 0;
       width: 0;
       height: 0;
@@ -391,6 +398,7 @@
       transform-origin: top center;
       transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 5;
+      pointer-events: none;
     }
 
     .envelope-seal {
@@ -416,21 +424,36 @@
       position: absolute;
       bottom: 10px;
       left: 20px;
-      width: 240px;
+      width: calc(100% - 40px);
       height: 150px;
+      padding: 14px 13px;
       background: #FFFFFF;
-      border-radius: 8px;
+      border: 1px solid rgba(219, 39, 119, 0.08);
+      border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 3;
-      padding: 14px;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      line-height: 1.45;
       color: var(--text-main);
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
       font-style: italic;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+    }
+
+    .envelope-paper p {
+      margin: 0;
+      width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+      scrollbar-width: thin;
     }
 
     .envelope-wrapper.opened .envelope-flap {
@@ -443,9 +466,33 @@
     }
 
     .envelope-wrapper.opened .envelope-paper {
-      transform: translateY(-85px);
+      transform: translateY(-82px);
       box-shadow: 0 14px 28px rgba(0,0,0,0.15);
-      z-index: 6;
+      z-index: 7;
+    }
+
+    @media (max-width: 420px) {
+      .envelope-wrapper {
+        width: 260px;
+        height: 238px;
+        margin-top: 24px;
+      }
+      .envelope-base { height: 158px; }
+      .envelope-pocket { border-width: 0 130px 98px 130px; }
+      .envelope-pocket-left { border-width: 79px 0 79px 130px; }
+      .envelope-pocket-right { border-width: 79px 130px 79px 0; }
+      .envelope-flap {
+        top: 80px;
+        border-width: 98px 130px 0 130px;
+      }
+      .envelope-paper {
+        left: 15px;
+        width: calc(100% - 30px);
+        height: 142px;
+        padding: 11px;
+        font-size: 0.82rem;
+      }
+      .envelope-wrapper.opened .envelope-paper { transform: translateY(-76px); }
     }
 
     /* SCENE 5: Balloons */
@@ -752,110 +799,7 @@
       border: none;
     }
 
-    /* Modal Sheet for Editor */
-    .editor-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(6px);
-      z-index: 300;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
 
-    .editor-modal.active { display: flex; }
-
-    .editor-sheet {
-      background: var(--white);
-      width: 100%;
-      max-width: 650px;
-      max-height: 90vh;
-      border-radius: 24px;
-      padding: 24px;
-      overflow-y: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
-
-    .editor-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1.5px solid var(--pink-soft);
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-      text-align: left;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1.5px solid var(--pink-blush);
-      border-radius: 12px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-main);
-      outline: none;
-    }
-
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--pink-deep);
-    }
-
-    /* Photo Manager in Editor */
-    .photo-grid-manager {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .photo-manage-item {
-      border: 1.5px solid var(--pink-blush);
-      border-radius: 12px;
-      padding: 8px;
-      position: relative;
-      background: var(--bg-cream);
-    }
-
-    .photo-thumb-wrap {
-      width: 100%;
-      height: 90px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 6px;
-    }
-
-    .photo-thumb-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .final-badge {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      background: #F59E0B;
-      color: white;
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      border-radius: 10px;
-      font-weight: 800;
-    }
 
     /* Responsive tweaks */
     @media (max-width: 480px) {
@@ -880,7 +824,6 @@
   <!-- Top Floating Controls -->
   <div class="top-controls">
     <button class="icon-btn" id="btn-music-toggle" title="Toggle Music">🎵</button>
-    <button class="icon-btn" id="btn-editor-open" title="Photo & Content Editor">⚙️</button>
   </div>
 
   <!-- Main Viewport -->
@@ -896,7 +839,7 @@
           <circle cx="68" cy="28" r="4" fill="#F59E0B" />
         </svg>
 
-        <h1 class="title-hand" id="dyn-welcome-name">Hey kannaa..! ❤️</h1>
+        <h1 class="title-hand" id="dyn-welcome-name">Hey Kannan! ❤️</h1>
         <p class="romantic-subtitle">
           Someone who loves you more than words can say has prepared a little surprise for you...
         </p>
@@ -975,7 +918,7 @@
         
         <div class="parchment-letter">
           <div class="letter-body" id="dyn-letter-content">
-My dearest Kanna,
+My dearest Kannan,
 
 Three years ago, I began one of the most beautiful journeys of my life.
 
@@ -1008,15 +951,12 @@ Your Vineetha ❤️
         <h2 class="title-serif">Wait... There's One More Thing 💗</h2>
         <p class="romantic-subtitle">A little secret, just for you.</p>
 
-        <div class="envelope-wrapper" id="magic-envelope" onclick="toggleEnvelope()">
+        <div class="envelope-wrapper" id="magic-envelope" role="button" tabindex="0" aria-label="Open or close the love letter envelope" onclick="toggleEnvelope()" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();toggleEnvelope();}">
           <div class="envelope-flap">
             <div class="envelope-seal">❤️</div>
           </div>
           <div class="envelope-paper" id="envelope-inner-letter">
-            <p id="dyn-envelope-msg">
-              "If I could travel back to the beginning and choose again, I would still choose you.<br><br>
-              You are my favorite chapter, my safest place, and the person I want beside me always. I love you! ❤️"
-            </p>
+            <p id="dyn-envelope-msg">If I could travel back to the beginning and choose again, I would still choose you. ❤️</p>
           </div>
           <div class="envelope-pocket-left"></div>
           <div class="envelope-pocket-right"></div>
@@ -1131,9 +1071,9 @@ Your Vineetha ❤️
         <!-- Category Filter Tabs -->
         <div class="gallery-filter-tabs">
           <button class="gallery-tab active" onclick="filterGallery('all', this)">All Moments</button>
-          <!-- <button class="gallery-tab" onclick="filterGallery('wedding', this)">Wedding</button>
+          <button class="gallery-tab" onclick="filterGallery('wedding', this)">Wedding</button>
           <button class="gallery-tab" onclick="filterGallery('couple', this)">Us Together</button>
-          <button class="gallery-tab" onclick="filterGallery('family', this)">Little Moments</button> -->
+          <button class="gallery-tab" onclick="filterGallery('family', this)">Little Moments</button>
         </div>
 
         <!-- Scrapbook Photo Grid -->
@@ -1171,7 +1111,7 @@ Your Vineetha ❤️
         <!-- Final Reveal Content (Shown after unwrapping) -->
         <div class="final-reveal-content" id="final-reveal-container">
           <div class="final-photo-frame">
-            <img id="final-surprise-img" src="" alt="Vineetha & Udai" />
+            <img id="final-surprise-img" src="" alt="Vineetha & Kannan" />
           </div>
 
           <h1 class="title-hand" style="font-size: 2.4rem;">Happy 3rd Anniversary!</h1>
@@ -1215,92 +1155,16 @@ Three years down. Forever to go.
     </div>
   </div>
 
-  <!-- EDITOR & PHOTO MANAGER MODAL 
-  <div class="editor-modal" id="editor-modal">
-    <div class="editor-sheet">
-      <div class="editor-header">
-        <h3 style="font-family: var(--font-heading); color: var(--pink-dark);">Experience & Photo Manager</h3>
-        <button class="icon-btn" onclick="closeEditor()" style="width:36px; height:36px;">✕</button>
-      </div>-->
-
-      <!-- Quick Toggle: Udai Viewer vs Edit -->
-      <!-- <div style="background: var(--pink-soft); padding: 12px 16px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <strong style="color: var(--pink-dark);">Viewer Preview Mode</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted);">Switch to Udai's clean romantic perspective</p>
-        </div>
-        <button class="btn-secondary" onclick="toggleViewerMode()">Test Udai View</button>
-      </div> -->
-
-      <!-- PHOTO MANAGER SECTION -->
-      <!-- <div style="margin-bottom: 24px;">
-        <h4 style="color: var(--text-main); margin-bottom: 8px;">📸 Real Couple Photographs</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
-          Upload photos with any original filenames, or place msg/couple1/couple2/couple3/couple4/illustration/illustrationb2 beside index.html. No renaming is required. -->
-        </p>
-        
-        <!-- <input type="file" id="photo-file-input" multiple accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
-        <button class="btn-primary" style="margin-top:0; width:100%;" onclick="document.getElementById('photo-file-input').click()">
-          📸 Add Our Photos (Select Multiple)
-        </button>
-
-        <div class="photo-grid-manager" id="photo-manager-grid"> -->
-          <!-- Dynamic thumbnails with category dropdown & "Set as Final Photo" button -->
-        </div>
-      </div>
-
-      <!-- CUSTOM MUSIC UPLOAD -->
-      <div class="form-group">
-        <label>🎵 Background Romantic Music (Optional MP3)</label>
-        <input type="file" accept="audio/*" onchange="handleAudioUpload(event)">
-        <small style="color: var(--text-muted);">If no file is selected, the built-in gentle romantic chime synth will play.</small>
-      </div>
-
-      <!-- EDIT TEXT CONTENT -->
-      <h4 style="color: var(--text-main); margin: 20px 0 10px 0;">✏️ Edit Personal Messages</h4>
-      
-      <div class="form-group">
-        <label>Recipient Name</label>
-        <input type="text" id="edit-husband-name" value="Udai">
-      </div>
-
-      <div class="form-group">
-        <label>Wife / Sender Name</label>
-        <input type="text" id="edit-wife-name" value="Vineetha">
-      </div>
-
-      <div class="form-group">
-        <label>Romantic Letter (Scene 3)</label>
-        <textarea id="edit-letter-text" rows="6"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Secret Envelope Message (Scene 4)</label>
-        <textarea id="edit-envelope-text" rows="3"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Final Gift Message (Scene 8)</label>
-        <textarea id="edit-final-text" rows="6"></textarea>
-      </div>
-
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
-        <button class="btn-primary" style="flex:1;" onclick="saveConfig()">Save All Changes ❤️</button>
-        <button class="btn-secondary" onclick="exportDataBundle()">Export Backup</button>
-      </div>
-    </div>
-  </div>
-
   <!-- SCRIPT LOGIC -->
   <script>
     /* =========================================================
        1. DEFAULT CONFIGURATION & APPLICATION STATE
        ========================================================= */
     const DEFAULT_CONFIG = {
-      husband: "Udai",
+      husband: "Kannan",
       wife: "Vineetha",
       anniversaryDate: "18 October",
-      letter: `My dearest Udai,
+      letter: `My dearest Kannan,
 
 Three years ago, I began one of the most beautiful journeys of my life.
 
@@ -1317,7 +1181,7 @@ Three years down, forever to go.
 
 With all my love,
 Your Vineetha ❤️`,
-      envelope: "If I could travel back to the beginning and choose again, I would still choose you.\n\nYou are my favorite chapter, my safest place, and the person I want beside me in every chapter still to come.\n\nI love you, Udai. ❤️",
+      envelope: "If I could travel back to the beginning and choose again, I would still choose you.\n\nYou are my favorite chapter, my safest place, and the person I want beside me in every chapter still to come.\n\nI love you, Kannan. ❤️",
       balloons: [
         "You are my favorite person. ❤️",
         "Thank you for choosing me every day. 🥰",
@@ -1353,7 +1217,7 @@ Three years down. Forever to go.`
     /* =========================================================
        2. INDEXED DB PERSISTENCE (Handles Multi-MB Images)
        ========================================================= */
-    const DB_NAME = "VineethaUdaiAnniversaryDB";
+    const DB_NAME = "VineethaKannanAnniversaryDB";
     const DB_VERSION = 1;
 
     function openDatabase() {
@@ -1666,8 +1530,7 @@ Three years down. Forever to go.`
       if (list.length === 0) {
         container.innerHTML = `
           <div style="grid-column: span 2; padding: 24px; text-align: center; color: var(--text-muted);">
-            <p>Our favorite photos will appear right here.</p>
-            <small>(Open the ⚙️ editor button anytime to add memories)</small>
+            <p>Every picture holds a little piece of our forever. ❤️</p>
           </div>
         `;
         return;
@@ -1693,137 +1556,6 @@ Three years down. Forever to go.`
       renderGallery(category);
     }
 
-    function renderPhotoManager() {
-      const grid = document.getElementById("photo-manager-grid");
-      grid.innerHTML = "";
-
-      appState.photos.forEach(photo => {
-        const el = document.createElement("div");
-        el.className = "photo-manage-item";
-        el.innerHTML = `
-          ${photo.isFinal ? '<span class="final-badge">Final Photo ❤️</span>' : ''}
-          <div class="photo-thumb-wrap">
-            <img src="${photo.dataUrl}" alt="${photo.name}">
-          </div>
-          <div style="font-size: 0.75rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 4px;">
-            ${photo.name}
-          </div>
-          <select onchange="updatePhotoCategory('${photo.id}', this.value)" style="font-size: 0.75rem; padding: 4px; margin-bottom: 4px;">
-            <option value="couple" ${photo.category === 'couple' ? 'selected' : ''}>Us Together</option>
-            <option value="wedding" ${photo.category === 'wedding' ? 'selected' : ''}>Wedding</option>
-            <option value="family" ${photo.category === 'family' ? 'selected' : ''}>Little Moments</option>
-            <option value="decor" ${photo.category === 'decor' ? 'selected' : ''}>Decoration</option>
-          </select>
-          <input type="text" value="${photo.caption || ''}" placeholder="Caption..." onchange="updatePhotoCaption('${photo.id}', this.value)" style="font-size: 0.75rem; padding: 3px 6px; margin-bottom: 6px;">
-          <div style="display:flex; gap:4px;">
-            <button class="btn-secondary" style="font-size: 0.7rem; padding: 4px 6px; flex:1;" onclick="setAsFinalPhoto('${photo.id}')">
-              Set Final ❤️
-            </button>
-            <button class="btn-secondary" style="font-size: 0.7rem; padding: 4px 6px; color:#EF4444;" onclick="deletePhoto('${photo.id}')">
-              🗑️
-            </button>
-          </div>
-        `;
-        grid.appendChild(el);
-      });
-
-      // Update final surprise image in Scene 8
-      const finalPhoto = appState.photos.find(p => p.isFinal);
-      const finalImg = document.getElementById("final-surprise-img");
-      if (finalPhoto) {
-        finalImg.src = finalPhoto.dataUrl;
-        finalImg.style.display = "block";
-      } else {
-        finalImg.removeAttribute("src");
-        finalImg.style.display = "none";
-      }
-    }
-
-    async function handlePhotoUpload(e) {
-      const files = Array.from(e.target.files);
-      if (!files.length) return;
-
-      const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-      for (const file of files) {
-        if (!allowedTypes.includes(file.type)) {
-          alert(`Skipped ${file.name}: please choose a JPG, PNG, WebP, or GIF image.`);
-          continue;
-        }
-        const reader = new FileReader();
-        reader.onload = async (evt) => {
-          try {
-            const newPhoto = {
-              id: "photo_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8),
-              name: file.name,
-              category: "couple",
-              caption: "Our beautiful moment",
-              dataUrl: evt.target.result,
-              isFinal: false
-            };
-            await savePhotoToDB(newPhoto);
-            appState.photos.push(newPhoto);
-            renderGallery();
-            renderPhotoManager();
-          } catch (err) {
-            console.error("Could not save photo", err);
-            alert(`Could not save ${file.name}. Try a smaller image or use a modern browser.`);
-          }
-        };
-        reader.onerror = () => alert(`Could not read ${file.name}. Please try again.`);
-        reader.readAsDataURL(file);
-      }
-      e.target.value = "";
-    }
-
-    async function updatePhotoCategory(id, category) {
-      const p = appState.photos.find(item => item.id === id);
-      if (p) {
-        p.category = category;
-        await savePhotoToDB(p);
-        renderGallery();
-      }
-    }
-
-    async function updatePhotoCaption(id, caption) {
-      const p = appState.photos.find(item => item.id === id);
-      if (p) {
-        p.caption = caption;
-        await savePhotoToDB(p);
-        renderGallery();
-      }
-    }
-
-    async function setAsFinalPhoto(id) {
-      appState.photos.forEach(p => p.isFinal = (p.id === id));
-      for (const p of appState.photos) {
-        await savePhotoToDB(p);
-      }
-      renderPhotoManager();
-      alert("Selected as your final surprise photograph! ❤️");
-    }
-
-    async function deletePhoto(id) {
-      if (confirm("Remove this photo from your gallery?")) {
-        appState.photos = appState.photos.filter(p => p.id !== id);
-        await removePhotoFromDB(id);
-        renderGallery();
-        renderPhotoManager();
-      }
-    }
-
-    function handleAudioUpload(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          customAudio = new Audio(evt.target.result);
-          customAudio.loop = true;
-          alert("Audio track uploaded successfully! Press 🎵 to listen.");
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
     /* =========================================================
        8. LIGHTBOX & MODALS
        ========================================================= */
@@ -1837,34 +1569,6 @@ Three years down. Forever to go.`
       document.getElementById("lightbox").classList.remove("active");
     }
 
-    document.getElementById("btn-editor-open").addEventListener("click", () => {
-      // Sync form values
-      document.getElementById("edit-husband-name").value = appState.config.husband;
-      document.getElementById("edit-wife-name").value = appState.config.wife;
-      document.getElementById("edit-letter-text").value = appState.config.letter;
-      document.getElementById("edit-envelope-text").value = appState.config.envelope;
-      document.getElementById("edit-final-text").value = appState.config.finalMsg;
-      renderPhotoManager();
-      document.getElementById("editor-modal").classList.add("active");
-    });
-
-    function closeEditor() {
-      document.getElementById("editor-modal").classList.remove("active");
-    }
-
-    function saveConfig() {
-      appState.config.husband = document.getElementById("edit-husband-name").value;
-      appState.config.wife = document.getElementById("edit-wife-name").value;
-      appState.config.letter = document.getElementById("edit-letter-text").value;
-      appState.config.envelope = document.getElementById("edit-envelope-text").value;
-      appState.config.finalMsg = document.getElementById("edit-final-text").value;
-
-      localStorage.setItem("anniversary_config", JSON.stringify(appState.config));
-      applyConfigToDOM();
-      closeEditor();
-      alert("Surprise configuration saved successfully! ❤️");
-    }
-
     function applyConfigToDOM() {
       document.getElementById("dyn-welcome-name").textContent = `Hey ${appState.config.husband}! ❤️`;
       document.getElementById("dyn-letter-content").textContent = appState.config.letter;
@@ -1872,41 +1576,6 @@ Three years down. Forever to go.`
       document.getElementById("dyn-final-msg").textContent = appState.config.finalMsg;
     }
 
-    function toggleViewerMode() {
-      appState.viewerMode = !appState.viewerMode;
-      document.getElementById("btn-editor-open").style.display = appState.viewerMode ? "none" : "flex";
-      closeEditor();
-      restartExperience();
-      if (appState.viewerMode) {
-        alert("Viewer Mode Activated!\n\nThis is the exact clean experience Udai will see. Tap anywhere at the very bottom right 3 times rapidly if you wish to exit viewer mode.");
-      }
-    }
-
-    // Secret gesture to exit viewer mode if testing
-    let secretTapCount = 0;
-    window.addEventListener("click", (e) => {
-      if (e.clientX > window.innerWidth - 60 && e.clientY > window.innerHeight - 60) {
-        secretTapCount++;
-        if (secretTapCount >= 3) {
-          appState.viewerMode = false;
-          document.getElementById("btn-editor-open").style.display = "flex";
-          secretTapCount = 0;
-          alert("Editor mode restored!");
-        }
-      }
-    });
-
-    function exportDataBundle() {
-      const bundle = {
-        config: appState.config,
-        photos: appState.photos
-      };
-      const blob = new Blob([JSON.stringify(bundle)], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = `Vineetha_Udai_Anniversary_Backup.json`;
-      a.click();
-    }
 
     /* =========================================================
        9. CONFETTI BURST EFFECT
@@ -1940,7 +1609,7 @@ Three years down. Forever to go.`
       }
       applyConfigToDOM();
 
-      // 2. Load photos previously added through the editor from IndexedDB.
+      // 2. Load any existing saved photo data, if present.
       try {
         const storedPhotos = await loadAllPhotosFromDB();
         if (storedPhotos && storedPhotos.length > 0) appState.photos = storedPhotos;
@@ -1990,20 +1659,11 @@ Three years down. Forever to go.`
         }
       }
 
-      // Never automatically choose a final photo. The owner selects it explicitly.
-      appState.photos.forEach(p => { if (p.bundled) p.isFinal = false; });
 
       // 4. Render gallery & setup
       renderGallery();
-      renderPhotoManager();
       updateProgressBar();
 
-      // Check URL parameters for view mode
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("mode") === "view") {
-        appState.viewerMode = true;
-        document.getElementById("btn-editor-open").style.display = "none";
-      }
     }
 
     window.addEventListener("DOMContentLoaded", initApp);
