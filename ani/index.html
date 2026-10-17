@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Years, One Forever — Vineetha ❤️ Udai</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FFF7F9;
+      --pink-soft: #FCE7EC;
+      --pink-blush: #FBCFE8;
+      --pink-primary: #F472B6;
+      --pink-deep: #DB2777;
+      --pink-dark: #9D174D;
+      --gold-accent: #F59E0B;
+      --gold-light: #FEF3C7;
+      --text-main: #4A1D2F;
+      --text-muted: #83475E;
+      --white: #FFFFFF;
+      --card-shadow: 0 14px 35px rgba(219, 39, 119, 0.12), 0 4px 12px rgba(0,0,0,0.05);
+      --font-hand: 'Dancing Script', cursive;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Nunito', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: linear-gradient(135deg, #FFF1F5 0%, #FCE7EC 50%, #FFF5F7 100%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Floating Particle Canvas */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Navigation & Utility Bar */
+    .top-controls {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid var(--pink-blush);
+      color: var(--pink-deep);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.15);
+      transition: all 0.25s ease;
+    }
+
+    .icon-btn:hover, .icon-btn:active {
+      transform: scale(1.08);
+      background: var(--white);
+      color: var(--pink-dark);
+      border-color: var(--pink-primary);
+    }
+
+    /* Progress Indicator */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(251, 207, 232, 0.4);
+      z-index: 99;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 12.5%;
+      background: linear-gradient(90deg, var(--pink-primary), var(--pink-deep));
+      transition: width 0.4s ease;
+    }
+
+    /* App Container */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 18px 80px 18px;
+    }
+
+    /* Scene Container */
+    .scene {
+      display: none;
+      width: 100%;
+      max-width: 560px;
+      animation: sceneFadeIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      text-align: center;
+    }
+
+    .scene.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes sceneFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Common Card Styling */
+    .romantic-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(251, 207, 232, 0.8);
+      border-radius: 28px;
+      padding: 34px 26px;
+      box-shadow: var(--card-shadow);
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .romantic-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Typography */
+    h1.title-hand {
+      font-family: var(--font-hand);
+      font-size: 2.85rem;
+      color: var(--pink-deep);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      text-shadow: 1px 2px 8px rgba(219, 39, 119, 0.15);
+    }
+
+    h2.title-serif {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    p.romantic-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 14px 34px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(219, 39, 119, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover, .btn-primary:active {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(219, 39, 119, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--pink-deep);
+      border: 1.5px solid var(--pink-blush);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--pink-soft);
+    }
+
+    .scene-nav {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* SCENE 1: Welcome */
+    .welcome-illustration {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px auto;
+      animation: gentleBounce 2.8s ease-in-out infinite;
+    }
+
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* SCENE 2: Cake */
+    .cake-container {
+      position: relative;
+      width: 240px;
+      height: 220px;
+      margin: 10px auto 25px auto;
+    }
+
+    .cake-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 12px 18px rgba(219, 39, 119, 0.15));
+    }
+
+    .candle-flame {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform-origin: center bottom;
+      animation: flicker 1.2s infinite alternate ease-in-out;
+    }
+
+    .candle-flame.blown-out {
+      opacity: 0 !important;
+      transform: scale(0) translateY(-10px) !important;
+      animation: none !important;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-1deg); }
+      100% { transform: scale(1.15) rotate(2deg); }
+    }
+
+    .smoke-puff {
+      opacity: 0;
+      transition: all 1s ease-out;
+    }
+
+    .smoke-puff.active {
+      opacity: 0.75;
+      transform: translateY(-28px) scale(1.5);
+    }
+
+    /* SCENE 3: Letter */
+    .parchment-letter {
+      background: #FFFDF9;
+      background-image: radial-gradient(#FBCFE8 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      border: 1.5px solid #F3E8E2;
+      border-radius: 20px;
+      padding: 28px 22px;
+      text-align: left;
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #37202B;
+      box-shadow: inset 0 0 20px rgba(251, 207, 232, 0.3), 0 8px 24px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .letter-body {
+      white-space: pre-line;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* SCENE 4: Envelope */
+    .envelope-wrapper {
+      position: relative;
+      width: 280px;
+      height: 200px;
+      margin: 20px auto 30px auto;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .envelope-base {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 280px;
+      height: 170px;
+      background: #F472B6;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(219, 39, 119, 0.25);
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 140px 105px 140px;
+      border-color: transparent transparent #EC4899 transparent;
+      z-index: 4;
+    }
+
+    .envelope-pocket-left {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 85px 0 85px 140px;
+      border-color: transparent transparent transparent #F472B6;
+      z-index: 4;
+    }
+
+    .envelope-pocket-right {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 85px 140px 85px 0;
+      border-color: transparent #F472B6 transparent transparent;
+      z-index: 4;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 105px 140px 0 140px;
+      border-color: #DB2777 transparent transparent transparent;
+      transform-origin: top center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+    }
+
+    .envelope-seal {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38px;
+      height: 38px;
+      background: #F59E0B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 6;
+      transition: opacity 0.3s ease;
+    }
+
+    .envelope-paper {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      width: 240px;
+      height: 150px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 3;
+      padding: 14px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-style: italic;
+    }
+
+    .envelope-wrapper.opened .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-wrapper.opened .envelope-seal {
+      opacity: 0;
+    }
+
+    .envelope-wrapper.opened .envelope-paper {
+      transform: translateY(-85px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.15);
+      z-index: 6;
+    }
+
+    /* SCENE 5: Balloons */
+    .balloons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .balloon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .balloon-shape {
+      width: 82px;
+      height: 104px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      position: relative;
+      box-shadow: inset -6px -6px 12px rgba(0,0,0,0.1), inset 6px 6px 14px rgba(255,255,255,0.6), 0 8px 18px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease;
+      animation: balloonFloat 3s infinite alternate ease-in-out;
+    }
+
+    .balloon-item:nth-child(2) .balloon-shape { animation-delay: 0.6s; }
+    .balloon-item:nth-child(3) .balloon-shape { animation-delay: 1.2s; }
+    .balloon-item:nth-child(4) .balloon-shape { animation-delay: 1.8s; }
+
+    @keyframes balloonFloat {
+      0% { transform: translateY(0) rotate(-2deg); }
+      100% { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    .balloon-string {
+      width: 1.5px;
+      height: 40px;
+      background: rgba(131, 71, 94, 0.4);
+      margin: 0 auto;
+    }
+
+    .balloon-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+      margin-top: 4px;
+    }
+
+    .balloon-card-pop {
+      background: var(--white);
+      border-left: 4px solid var(--pink-primary);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      animation: popNoteIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popNoteIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* SCENE 6: Rose Bouquet */
+    .bouquet-wrapper {
+      position: relative;
+      margin: 15px auto;
+      max-width: 240px;
+    }
+
+    .bouquet-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .bouquet-card-item {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--pink-blush);
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-style: italic;
+      font-family: var(--font-heading);
+      color: var(--pink-dark);
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.08);
+      transform: translateY(0);
+      transition: transform 0.25s ease;
+    }
+
+    /* SCENE 7: Photo Gallery */
+    .gallery-filter-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      width: 100%;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .gallery-filter-tabs::-webkit-scrollbar { display: none; }
+
+    .gallery-tab {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--pink-blush);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .gallery-tab.active {
+      background: var(--pink-deep);
+      color: var(--white);
+      border-color: var(--pink-deep);
+    }
+
+    .scrapbook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 100%;
+    }
+
+    .scrapbook-polaroid {
+      background: var(--white);
+      padding: 10px 10px 16px 10px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .scrapbook-polaroid:hover, .scrapbook-polaroid:active {
+      transform: scale(1.03) rotate(0.5deg);
+      z-index: 2;
+    }
+
+    .polaroid-img-wrap {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FEE2E2;
+    }
+
+    .polaroid-img-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid-caption {
+      font-family: var(--font-hand);
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-top: 10px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* SCENE 8: Final Gift Reveal */
+    .gift-box-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 15px auto 25px auto;
+      cursor: pointer;
+    }
+
+    .gift-box-lid {
+      width: 170px;
+      height: 42px;
+      background: #EC4899;
+      border-radius: 8px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 6px 16px rgba(219, 39, 119, 0.25);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2;
+    }
+
+    .gift-box-body {
+      width: 150px;
+      height: 120px;
+      background: #DB2777;
+      border-radius: 0 0 12px 12px;
+      margin: -2px auto 0 auto;
+      position: relative;
+      box-shadow: 0 14px 28px rgba(157, 23, 77, 0.3);
+    }
+
+    .gift-ribbon-v {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 100%;
+      background: #F59E0B;
+    }
+
+    .gift-bow {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.2rem;
+    }
+
+    .gift-box-container.opened .gift-box-lid {
+      transform: translateY(-55px) rotate(-14deg);
+      opacity: 0.4;
+    }
+
+    .final-reveal-content {
+      display: none;
+      width: 100%;
+      animation: finalFade 0.8s ease forwards;
+    }
+
+    @keyframes finalFade {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .final-photo-frame {
+      border: 8px solid var(--white);
+      border-radius: 20px;
+      box-shadow: 0 16px 36px rgba(219, 39, 119, 0.25);
+      overflow: hidden;
+      max-width: 320px;
+      margin: 0 auto 20px auto;
+      background: #FFE4E6;
+    }
+
+    .final-photo-frame img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Full-screen Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 10, 20, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-modal.active { display: flex; }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 14px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+      border: 4px solid var(--white);
+    }
+
+    .lightbox-caption {
+      color: var(--white);
+      font-family: var(--font-hand);
+      font-size: 1.5rem;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Modal Sheet for Editor */
+    .editor-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .editor-modal.active { display: flex; }
+
+    .editor-sheet {
+      background: var(--white);
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      border-radius: 24px;
+      padding: 24px;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--pink-soft);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--pink-blush);
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--pink-deep);
+    }
+
+    /* Photo Manager in Editor */
+    .photo-grid-manager {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .photo-manage-item {
+      border: 1.5px solid var(--pink-blush);
+      border-radius: 12px;
+      padding: 8px;
+      position: relative;
+      background: var(--bg-cream);
+    }
+
+    .photo-thumb-wrap {
+      width: 100%;
+      height: 90px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .photo-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .final-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: #F59E0B;
+      color: white;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      h1.title-hand { font-size: 2.3rem; }
+      h2.title-serif { font-size: 1.5rem; }
+      .romantic-card { padding: 26px 18px; }
+      .scrapbook-grid { gap: 10px; }
+    }
+  </style>
+  <meta name="theme-color" content="#FCE7EC">
+</head>
+<body>
+
+  <!-- Background Canvas for Floating Hearts & Sparkles -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progress-bar"></div>
+  </div>
+
+  <!-- Top Floating Controls -->
+  <div class="top-controls">
+    <button class="icon-btn" id="btn-music-toggle" title="Toggle Music">🎵</button>
+    <button class="icon-btn" id="btn-editor-open" title="Photo & Content Editor">⚙️</button>
+  </div>
+
+  <!-- Main Viewport -->
+  <main class="app-viewport">
+
+    <!-- SCENE 1: Welcome -->
+    <section class="scene active" id="scene-1">
+      <div class="romantic-card">
+        <svg class="welcome-illustration" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="44" fill="#FCE7EC" />
+          <path d="M50 30 C45 20, 25 22, 25 38 C25 55, 50 72, 50 72 C50 72, 75 55, 75 38 C75 22, 55 20, 50 30 Z" fill="#F472B6" />
+          <path d="M48 35 C45 28, 32 30, 32 40 C32 50, 48 62, 48 62 C48 62, 44 48, 48 35 Z" fill="#FBCFE8" opacity="0.6" />
+          <circle cx="68" cy="28" r="4" fill="#F59E0B" />
+        </svg>
+
+        <h1 class="title-hand" id="dyn-welcome-name">Hey Udai! ❤️</h1>
+        <p class="romantic-subtitle">
+          Someone who loves you more than words can say has prepared a little surprise for you...
+        </p>
+        <p style="font-family: var(--font-hand); font-size: 1.45rem; color: var(--pink-dark); margin-bottom: 24px;">
+          Made with all my love, Vineetha 💗
+        </p>
+        
+        <button class="btn-primary" onclick="goToScene(2)">
+          Open Your Surprise ❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENE 2: Cake with 3 Candles -->
+    <section class="scene" id="scene-2">
+      <div class="romantic-card">
+        <h2 class="title-serif">Three Beautiful Years Together 🎂</h2>
+        <p class="romantic-subtitle" style="margin-bottom: 10px;">
+          Three years of love, laughter, little moments, and choosing each other every day.
+        </p>
+
+        <div class="cake-container">
+          <svg class="cake-svg" viewBox="0 0 200 180">
+            <!-- Plate -->
+            <ellipse cx="100" cy="160" rx="90" ry="16" fill="#FCE7EC" stroke="#F472B6" stroke-width="2"/>
+            <!-- Bottom Tier -->
+            <path d="M40 120 C40 120, 40 148, 40 148 C40 156, 70 162, 100 162 C130 162, 160 156, 160 148 L160 120 Z" fill="#FBCFE8"/>
+            <ellipse cx="100" cy="120" rx="60" ry="12" fill="#F472B6"/>
+            <!-- Frosting Drips -->
+            <path d="M40 120 Q55 136 70 120 Q85 136 100 120 Q115 136 130 120 Q145 136 160 120" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round"/>
+            
+            <!-- Top Tier -->
+            <path d="M55 85 L55 110 C55 116, 75 120, 100 120 C125 120, 145 116, 145 110 L145 85 Z" fill="#FFFFFF"/>
+            <ellipse cx="100" cy="85" rx="45" ry="10" fill="#FCE7EC"/>
+
+            <!-- Candle 1 -->
+            <rect x="75" y="48" width="6" height="36" rx="3" fill="#F472B6"/>
+            <ellipse class="candle-flame" id="flame-1" cx="78" cy="40" rx="5" ry="8" fill="#F59E0B"/>
+            <circle class="smoke-puff" id="smoke-1" cx="78" cy="35" r="5" fill="#D1D5DB"/>
+
+            <!-- Candle 2 -->
+            <rect x="97" y="42" width="6" height="42" rx="3" fill="#DB2777"/>
+            <ellipse class="candle-flame" id="flame-2" cx="100" cy="34" rx="5" ry="8" fill="#F59E0B"/>
+            <circle class="smoke-puff" id="smoke-2" cx="100" cy="29" r="5" fill="#D1D5DB"/>
+
+            <!-- Candle 3 -->
+            <rect x="119" y="48" width="6" height="36" rx="3" fill="#F472B6"/>
+            <ellipse class="candle-flame" id="flame-3" cx="122" cy="40" rx="5" ry="8" fill="#F59E0B"/>
+            <circle class="smoke-puff" id="smoke-3" cx="122" cy="35" r="5" fill="#D1D5DB"/>
+          </svg>
+        </div>
+
+        <div id="cake-wish-state">
+          <button class="btn-primary" id="btn-blow-candle" onclick="extinguishCandles()">
+            Make a Wish & Blow Candles 🕯️
+          </button>
+        </div>
+
+        <div id="cake-revealed-msg" style="display:none; margin-top: 14px;">
+          <p style="font-family: var(--font-hand); font-size: 1.5rem; color: var(--pink-dark); margin-bottom: 16px;">
+            ✨ "Here's to all the beautiful years waiting for us." ✨
+          </p>
+          <button class="btn-primary" onclick="goToScene(3)">Continue Our Story ❤️</button>
+        </div>
+
+        <div class="scene-nav">
+          <button class="btn-secondary" onclick="goToScene(1)">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: Romantic Letter -->
+    <section class="scene" id="scene-3">
+      <div class="romantic-card">
+        <h2 class="title-serif">A Little Letter for My Love 💌</h2>
+        
+        <div class="parchment-letter">
+          <div class="letter-body" id="dyn-letter-content">
+My dearest Udai,
+
+Three years ago, I began one of the most beautiful journeys of my life.
+
+Today, I still feel lucky to call you my husband.
+
+Thank you for being my partner, my happiness, my comfort, and my home.
+
+Every memory with you is a little treasure I want to keep forever.
+
+Through every smile, every challenge, and every ordinary day, I am grateful that we get to walk through life together.
+
+Happy Third Wedding Anniversary, my love.
+Three years down, forever to go.
+
+With all my love,
+Your Vineetha ❤️
+          </div>
+        </div>
+
+        <div class="scene-nav" style="margin-top: 20px;">
+          <button class="btn-secondary" onclick="goToScene(2)">Back</button>
+          <button class="btn-primary" onclick="goToScene(4)">Open What's Inside 💗</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 4: Magic Envelope -->
+    <section class="scene" id="scene-4">
+      <div class="romantic-card">
+        <h2 class="title-serif">Wait... There's One More Thing 💗</h2>
+        <p class="romantic-subtitle">A little secret, just for you.</p>
+
+        <div class="envelope-wrapper" id="magic-envelope" onclick="toggleEnvelope()">
+          <div class="envelope-flap">
+            <div class="envelope-seal">❤️</div>
+          </div>
+          <div class="envelope-paper" id="envelope-inner-letter">
+            <p id="dyn-envelope-msg">
+              "If I could travel back to the beginning and choose again, I would still choose you.<br><br>
+              You are my favorite chapter, my safest place, and the person I want beside me always. I love you! ❤️"
+            </p>
+          </div>
+          <div class="envelope-pocket-left"></div>
+          <div class="envelope-pocket-right"></div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-base"></div>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          (Tap the envelope to open or close)
+        </p>
+
+        <div class="scene-nav">
+          <button class="btn-secondary" onclick="goToScene(3)">Back</button>
+          <button class="btn-primary" onclick="goToScene(5)">Discover Next Surprise 🎈</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 5: Balloons -->
+    <section class="scene" id="scene-5">
+      <div class="romantic-card">
+        <h2 class="title-serif">Pop The Balloons 🎈</h2>
+        <p class="romantic-subtitle">Tap each balloon to reveal what's in my heart...</p>
+
+        <div class="balloons-grid">
+          <!-- Balloon 1 -->
+          <div class="balloon-item" onclick="popBalloon(1)">
+            <div class="balloon-shape" id="balloon-body-1" style="background: radial-gradient(circle at 35% 35%, #FBCFE8, #EC4899);"></div>
+            <div class="balloon-string" id="balloon-str-1"></div>
+            <span class="balloon-tag" id="balloon-tag-1">Tap me!</span>
+            <div class="balloon-card-pop" id="balloon-pop-1" style="display:none;"></div>
+          </div>
+
+          <!-- Balloon 2 -->
+          <div class="balloon-item" onclick="popBalloon(2)">
+            <div class="balloon-shape" id="balloon-body-2" style="background: radial-gradient(circle at 35% 35%, #FFFFFF, #E5E7EB);"></div>
+            <div class="balloon-string" id="balloon-str-2"></div>
+            <span class="balloon-tag" id="balloon-tag-2">Tap me!</span>
+            <div class="balloon-card-pop" id="balloon-pop-2" style="display:none;"></div>
+          </div>
+
+          <!-- Balloon 3 -->
+          <div class="balloon-item" onclick="popBalloon(3)">
+            <div class="balloon-shape" id="balloon-body-3" style="background: radial-gradient(circle at 35% 35%, #FDA4AF, #E11D48);"></div>
+            <div class="balloon-string" id="balloon-str-3"></div>
+            <span class="balloon-tag" id="balloon-tag-3">Tap me!</span>
+            <div class="balloon-card-pop" id="balloon-pop-3" style="display:none;"></div>
+          </div>
+
+          <!-- Balloon 4 -->
+          <div class="balloon-item" onclick="popBalloon(4)">
+            <div class="balloon-shape" id="balloon-body-4" style="background: radial-gradient(circle at 35% 35%, #FEF3C7, #F59E0B);"></div>
+            <div class="balloon-string" id="balloon-str-4"></div>
+            <span class="balloon-tag" id="balloon-tag-4">Tap me!</span>
+            <div class="balloon-card-pop" id="balloon-pop-4" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="scene-nav">
+          <button class="btn-secondary" onclick="goToScene(4)">Back</button>
+          <button class="btn-primary" onclick="goToScene(6)">A Sweet Bouquet 🌹</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 6: Rose Bouquet -->
+    <section class="scene" id="scene-6">
+      <div class="romantic-card">
+        <h2 class="title-serif">Roses for My Favorite Person 🌹</h2>
+        <p class="romantic-subtitle">
+          "If I could give you one flower for every reason I love you, this bouquet would never end."
+        </p>
+
+        <div class="bouquet-wrapper">
+          <svg viewBox="0 0 160 160" width="150" height="150">
+            <!-- Bouquet wrapper paper -->
+            <polygon points="40,150 120,150 140,80 20,80" fill="#FCE7EC" stroke="#F472B6" stroke-width="2"/>
+            <polygon points="50,150 110,150 130,95 30,95" fill="#FBCFE8"/>
+            <circle cx="80" cy="130" r="12" fill="#F59E0B" opacity="0.8"/>
+            <!-- Stems & leaves -->
+            <path d="M50 85 Q75 110 80 140" stroke="#10B981" stroke-width="3" fill="none"/>
+            <path d="M110 85 Q85 110 80 140" stroke="#10B981" stroke-width="3" fill="none"/>
+            <!-- Roses -->
+            <circle cx="80" cy="60" r="24" fill="#E11D48"/>
+            <circle cx="58" cy="74" r="20" fill="#F43F5E"/>
+            <circle cx="102" cy="74" r="20" fill="#BE123C"/>
+            <circle cx="70" cy="46" r="16" fill="#FB7185"/>
+            <circle cx="92" cy="48" r="16" fill="#E11D48"/>
+            <circle cx="80" cy="58" r="10" fill="#FFF1F2"/>
+          </svg>
+        </div>
+
+        <div class="bouquet-cards">
+          <div class="bouquet-card-item">"You are my today and all of my tomorrows."</div>
+          <div class="bouquet-card-item">"My favorite place will always be beside you."</div>
+          <div class="bouquet-card-item">"Forever is beautiful because I get to share it with you."</div>
+        </div>
+
+        <div class="scene-nav">
+          <button class="btn-secondary" onclick="goToScene(5)">Back</button>
+          <button class="btn-primary" onclick="goToScene(7)">Our Real Memories 📸</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 7: Photo Gallery -->
+    <section class="scene" id="scene-7">
+      <div class="romantic-card" style="padding-left: 16px; padding-right: 16px;">
+        <h2 class="title-serif">Our Real Memories 📸</h2>
+        <p class="romantic-subtitle">Every snapshot is another proof of our happiness.</p>
+
+        <!-- Category Filter Tabs -->
+        <div class="gallery-filter-tabs">
+          <button class="gallery-tab active" onclick="filterGallery('all', this)">All Moments</button>
+          <button class="gallery-tab" onclick="filterGallery('wedding', this)">Wedding</button>
+          <button class="gallery-tab" onclick="filterGallery('couple', this)">Us Together</button>
+          <button class="gallery-tab" onclick="filterGallery('family', this)">Little Moments</button>
+        </div>
+
+        <!-- Scrapbook Photo Grid -->
+        <div class="scrapbook-grid" id="gallery-container">
+          <!-- Populated dynamically from storage -->
+        </div>
+
+        <div class="scene-nav" style="margin-top: 24px;">
+          <button class="btn-secondary" onclick="goToScene(6)">Back</button>
+          <button class="btn-primary" onclick="goToScene(8)">One Final Surprise 🎁</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 8: Final Gift Reveal -->
+    <section class="scene" id="scene-8">
+      <div class="romantic-card">
+        <div id="gift-box-stage">
+          <h2 class="title-serif">One Last Little Surprise 🎁</h2>
+          <p class="romantic-subtitle">Open it, my love...</p>
+
+          <div class="gift-box-container" id="gift-box-interactive" onclick="openGiftBox()">
+            <div class="gift-box-lid">
+              <div class="gift-bow">🎀</div>
+              <div class="gift-ribbon-v"></div>
+            </div>
+            <div class="gift-box-body">
+              <div class="gift-ribbon-v"></div>
+            </div>
+          </div>
+
+          <button class="btn-primary" onclick="openGiftBox()">Open Your Gift ❤️</button>
+        </div>
+
+        <!-- Final Reveal Content (Shown after unwrapping) -->
+        <div class="final-reveal-content" id="final-reveal-container">
+          <div class="final-photo-frame">
+            <img id="final-surprise-img" src="" alt="Vineetha & Udai" />
+          </div>
+
+          <h1 class="title-hand" style="font-size: 2.4rem;">Happy 3rd Anniversary!</h1>
+          
+          <div class="parchment-letter" style="text-align: center; margin-top: 14px;">
+            <p id="dyn-final-msg" style="white-space: pre-line; font-size: 1.05rem;">
+Three years ago, we began our story.
+
+Today, I love you more.
+
+Tomorrow, I will choose you again.
+
+And forever, I will be yours.
+
+With all my love,
+Your Vineetha 💗
+
+Three years down. Forever to go.
+            </p>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <button class="btn-secondary" onclick="restartExperience()">Start From Beginning ✨</button>
+          </div>
+        </div>
+
+        <div class="scene-nav" id="final-nav-back">
+          <button class="btn-secondary" onclick="goToScene(7)">Back</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Full-screen Photo Lightbox -->
+  <div class="lightbox-modal" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Memory">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- EDITOR & PHOTO MANAGER MODAL -->
+  <div class="editor-modal" id="editor-modal">
+    <div class="editor-sheet">
+      <div class="editor-header">
+        <h3 style="font-family: var(--font-heading); color: var(--pink-dark);">Experience & Photo Manager</h3>
+        <button class="icon-btn" onclick="closeEditor()" style="width:36px; height:36px;">✕</button>
+      </div>
+
+      <!-- Quick Toggle: Udai Viewer vs Edit -->
+      <div style="background: var(--pink-soft); padding: 12px 16px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong style="color: var(--pink-dark);">Viewer Preview Mode</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Switch to Udai's clean romantic perspective</p>
+        </div>
+        <button class="btn-secondary" onclick="toggleViewerMode()">Test Udai View</button>
+      </div>
+
+      <!-- PHOTO MANAGER SECTION -->
+      <div style="margin-bottom: 24px;">
+        <h4 style="color: var(--text-main); margin-bottom: 8px;">📸 Real Couple Photographs</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          Upload photos with any original filenames, or place msg/couple1/couple2/couple3/couple4/illustration/illustrationb2 beside index.html. No renaming is required.
+        </p>
+        
+        <input type="file" id="photo-file-input" multiple accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
+        <button class="btn-primary" style="margin-top:0; width:100%;" onclick="document.getElementById('photo-file-input').click()">
+          📸 Add Our Photos (Select Multiple)
+        </button>
+
+        <div class="photo-grid-manager" id="photo-manager-grid">
+          <!-- Dynamic thumbnails with category dropdown & "Set as Final Photo" button -->
+        </div>
+      </div>
+
+      <!-- CUSTOM MUSIC UPLOAD -->
+      <div class="form-group">
+        <label>🎵 Background Romantic Music (Optional MP3)</label>
+        <input type="file" accept="audio/*" onchange="handleAudioUpload(event)">
+        <small style="color: var(--text-muted);">If no file is selected, the built-in gentle romantic chime synth will play.</small>
+      </div>
+
+      <!-- EDIT TEXT CONTENT -->
+      <h4 style="color: var(--text-main); margin: 20px 0 10px 0;">✏️ Edit Personal Messages</h4>
+      
+      <div class="form-group">
+        <label>Recipient Name</label>
+        <input type="text" id="edit-husband-name" value="Udai">
+      </div>
+
+      <div class="form-group">
+        <label>Wife / Sender Name</label>
+        <input type="text" id="edit-wife-name" value="Vineetha">
+      </div>
+
+      <div class="form-group">
+        <label>Romantic Letter (Scene 3)</label>
+        <textarea id="edit-letter-text" rows="6"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Secret Envelope Message (Scene 4)</label>
+        <textarea id="edit-envelope-text" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Final Gift Message (Scene 8)</label>
+        <textarea id="edit-final-text" rows="6"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button class="btn-primary" style="flex:1;" onclick="saveConfig()">Save All Changes ❤️</button>
+        <button class="btn-secondary" onclick="exportDataBundle()">Export Backup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    /* =========================================================
+       1. DEFAULT CONFIGURATION & APPLICATION STATE
+       ========================================================= */
+    const DEFAULT_CONFIG = {
+      husband: "Udai",
+      wife: "Vineetha",
+      anniversaryDate: "18 October",
+      letter: `My dearest Udai,
+
+Three years ago, I began one of the most beautiful journeys of my life.
+
+Today, I still feel lucky to call you my husband.
+
+Thank you for being my partner, my happiness, my comfort, and my home.
+
+Every memory with you is a little treasure I want to keep forever.
+
+Through every smile, every challenge, and every ordinary day, I am grateful that we get to walk through life together.
+
+Happy Third Wedding Anniversary, my love.
+Three years down, forever to go.
+
+With all my love,
+Your Vineetha ❤️`,
+      envelope: "If I could travel back to the beginning and choose again, I would still choose you.\n\nYou are my favorite chapter, my safest place, and the person I want beside me in every chapter still to come.\n\nI love you, Udai. ❤️",
+      balloons: [
+        "You are my favorite person. ❤️",
+        "Thank you for choosing me every day. 🥰",
+        "Three years down, forever to go. ✨",
+        "If I had to choose again, I would choose you. 💍"
+      ],
+      finalMsg: `Happy 3rd Wedding Anniversary, My Love ❤️
+
+Three years ago, we began our story.
+
+Today, I love you more.
+
+Tomorrow, I will choose you again.
+
+And forever, I will be yours.
+
+With all my love,
+Your Vineetha 💗
+
+Three years down. Forever to go.`
+    };
+
+    let appState = {
+      currentScene: 1,
+      totalScenes: 8,
+      config: { ...DEFAULT_CONFIG },
+      photos: [], // Array of { id, name, category, caption, dataUrl, isFinal }
+      audioUrl: null,
+      isPlayingAudio: false,
+      viewerMode: false
+    };
+
+    /* =========================================================
+       2. INDEXED DB PERSISTENCE (Handles Multi-MB Images)
+       ========================================================= */
+    const DB_NAME = "VineethaUdaiAnniversaryDB";
+    const DB_VERSION = 1;
+
+    function openDatabase() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains("photos")) {
+            db.createObjectStore("photos", { keyPath: "id" });
+          }
+          if (!db.objectStoreNames.contains("config")) {
+            db.createObjectStore("config", { keyPath: "key" });
+          }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    async function savePhotoToDB(photo) {
+      const db = await openDatabase();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction("photos", "readwrite");
+        tx.objectStore("photos").put(photo);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function removePhotoFromDB(id) {
+      const db = await openDatabase();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction("photos", "readwrite");
+        tx.objectStore("photos").delete(id);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function loadAllPhotosFromDB() {
+      const db = await openDatabase();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction("photos", "readonly");
+        const req = tx.objectStore("photos").getAll();
+        req.onsuccess = () => resolve(req.result || []);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    /* =========================================================
+       3. AMBIENT BACKGROUND PARTICLES (Canvas)
+       ========================================================= */
+    const canvas = document.getElementById("ambient-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class HeartParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 20;
+        this.size = Math.random() * 14 + 8;
+        this.speedY = Math.random() * 0.9 + 0.4;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.opacity = Math.random() * 0.45 + 0.25;
+        this.hue = Math.random() > 0.4 ? 340 : 355; // Blush pinks and warm roses
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        if (this.y < -20) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillStyle = `hsla(${this.hue}, 85%, 72%, ${this.opacity})`;
+        ctx.beginPath();
+        const topCurveHeight = this.size * 0.3;
+        ctx.moveTo(0, topCurveHeight);
+        ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+        ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+        ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+        ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 24; i++) {
+      particles.push(new HeartParticle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* =========================================================
+       4. SCENE NAVIGATION & PROGRESS
+       ========================================================= */
+    function goToScene(sceneNumber) {
+      document.querySelectorAll(".scene").forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(`scene-${sceneNumber}`);
+      if (target) {
+        target.classList.add("active");
+        appState.currentScene = sceneNumber;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        updateProgressBar();
+      }
+    }
+
+    function updateProgressBar() {
+      const percentage = (appState.currentScene / appState.totalScenes) * 100;
+      document.getElementById("progress-bar").style.width = percentage + "%";
+    }
+
+    function restartExperience() {
+      // Reset candles
+      document.querySelectorAll(".candle-flame").forEach(f => f.classList.remove("blown-out"));
+      document.querySelectorAll(".smoke-puff").forEach(s => s.classList.remove("active"));
+      document.getElementById("cake-wish-state").style.display = "block";
+      document.getElementById("cake-revealed-msg").style.display = "none";
+      
+      // Reset envelope
+      document.getElementById("magic-envelope").classList.remove("opened");
+      
+      // Reset gift box
+      document.getElementById("gift-box-interactive").classList.remove("opened");
+      document.getElementById("gift-box-stage").style.display = "block";
+      document.getElementById("final-reveal-container").style.display = "none";
+      document.getElementById("final-nav-back").style.display = "flex";
+
+      goToScene(1);
+    }
+
+    /* =========================================================
+       5. SCENE SPECIFIC INTERACTIONS
+       ========================================================= */
+    // Cake Candle Extinguish
+    function extinguishCandles() {
+      playChimeSound(520, "triangle");
+      document.querySelectorAll(".candle-flame").forEach(f => f.classList.add("blown-out"));
+      document.querySelectorAll(".smoke-puff").forEach(s => s.classList.add("active"));
+      
+      setTimeout(() => {
+        document.getElementById("cake-wish-state").style.display = "none";
+        document.getElementById("cake-revealed-msg").style.display = "block";
+        triggerMiniConfetti();
+      }, 700);
+    }
+
+    // Magic Envelope
+    function toggleEnvelope() {
+      const env = document.getElementById("magic-envelope");
+      env.classList.toggle("opened");
+      playChimeSound(680, "sine");
+    }
+
+    // Balloon Popping
+    function popBalloon(index) {
+      const shape = document.getElementById(`balloon-body-${index}`);
+      const str = document.getElementById(`balloon-str-${index}`);
+      const tag = document.getElementById(`balloon-tag-${index}`);
+      const popMsg = document.getElementById(`balloon-pop-${index}`);
+
+      if (shape.style.display !== "none") {
+        playPopSound();
+        shape.style.display = "none";
+        str.style.display = "none";
+        tag.style.display = "none";
+        
+        popMsg.textContent = appState.config.balloons[index - 1];
+        popMsg.style.display = "block";
+        triggerMiniConfetti();
+      }
+    }
+
+    // Final Gift Box Reveal
+    function openGiftBox() {
+      const box = document.getElementById("gift-box-interactive");
+      box.classList.add("opened");
+      playChimeSound(800, "triangle");
+      triggerMiniConfetti();
+
+      setTimeout(() => {
+        document.getElementById("gift-box-stage").style.display = "none";
+        document.getElementById("final-nav-back").style.display = "none";
+        document.getElementById("final-reveal-container").style.display = "block";
+      }, 700);
+    }
+
+    /* =========================================================
+       6. WEB AUDIO API SYNTHESIZER & AUDIO PLAYER
+       ========================================================= */
+    let audioCtx = null;
+    let customAudio = null;
+    let synthInterval = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+    }
+
+    function playPopSound() {
+      initAudioContext();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.12);
+    }
+
+    function playChimeSound(freq = 600, type = "sine") {
+      initAudioContext();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.5);
+    }
+
+    // Built-in Music Box Melody (Canon in D / Romantic Lullaby Arpeggio)
+    const melodyNotes = [
+      523.25, 659.25, 783.99, 1046.50, // C - E - G - C
+      493.88, 587.33, 783.99, 987.77,  // B - D - G - B
+      440.00, 523.25, 659.25, 880.00,  // A - C - E - A
+      392.00, 493.88, 587.33, 783.99   // G - B - D - G
+    ];
+
+    function startRomanticSynth() {
+      initAudioContext();
+      let step = 0;
+      synthInterval = setInterval(() => {
+        if (!appState.isPlayingAudio) return;
+        const note = melodyNotes[step % melodyNotes.length];
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(note, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.9);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.9);
+        step++;
+      }, 340);
+    }
+
+    document.getElementById("btn-music-toggle").addEventListener("click", () => {
+      initAudioContext();
+      if (!appState.isPlayingAudio) {
+        appState.isPlayingAudio = true;
+        document.getElementById("btn-music-toggle").textContent = "💖";
+        if (customAudio) {
+          customAudio.play();
+        } else {
+          startRomanticSynth();
+        }
+      } else {
+        appState.isPlayingAudio = false;
+        document.getElementById("btn-music-toggle").textContent = "🎵";
+        if (customAudio) customAudio.pause();
+        if (synthInterval) clearInterval(synthInterval);
+      }
+    });
+
+    /* =========================================================
+       7. PHOTO MANAGEMENT & CATEGORIES
+       ========================================================= */
+    function renderGallery(filter = "all") {
+      const container = document.getElementById("gallery-container");
+      container.innerHTML = "";
+
+      let list = appState.photos;
+      if (filter !== "all") {
+        list = list.filter(p => p.category === filter);
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: span 2; padding: 24px; text-align: center; color: var(--text-muted);">
+            <p>Our favorite photos will appear right here.</p>
+            <small>(Open the ⚙️ editor button anytime to add memories)</small>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach((p, idx) => {
+        const item = document.createElement("div");
+        item.className = "scrapbook-polaroid";
+        item.onclick = () => openLightbox(p.dataUrl, p.caption || "A beautiful memory ❤️");
+        item.innerHTML = `
+          <div class="polaroid-img-wrap">
+            <img src="${p.dataUrl}" alt="${p.name}">
+          </div>
+          <div class="polaroid-caption">${p.caption || "Us, always ❤️"}</div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function filterGallery(category, btn) {
+      document.querySelectorAll(".gallery-tab").forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+      renderGallery(category);
+    }
+
+    function renderPhotoManager() {
+      const grid = document.getElementById("photo-manager-grid");
+      grid.innerHTML = "";
+
+      appState.photos.forEach(photo => {
+        const el = document.createElement("div");
+        el.className = "photo-manage-item";
+        el.innerHTML = `
+          ${photo.isFinal ? '<span class="final-badge">Final Photo ❤️</span>' : ''}
+          <div class="photo-thumb-wrap">
+            <img src="${photo.dataUrl}" alt="${photo.name}">
+          </div>
+          <div style="font-size: 0.75rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 4px;">
+            ${photo.name}
+          </div>
+          <select onchange="updatePhotoCategory('${photo.id}', this.value)" style="font-size: 0.75rem; padding: 4px; margin-bottom: 4px;">
+            <option value="couple" ${photo.category === 'couple' ? 'selected' : ''}>Us Together</option>
+            <option value="wedding" ${photo.category === 'wedding' ? 'selected' : ''}>Wedding</option>
+            <option value="family" ${photo.category === 'family' ? 'selected' : ''}>Little Moments</option>
+            <option value="decor" ${photo.category === 'decor' ? 'selected' : ''}>Decoration</option>
+          </select>
+          <input type="text" value="${photo.caption || ''}" placeholder="Caption..." onchange="updatePhotoCaption('${photo.id}', this.value)" style="font-size: 0.75rem; padding: 3px 6px; margin-bottom: 6px;">
+          <div style="display:flex; gap:4px;">
+            <button class="btn-secondary" style="font-size: 0.7rem; padding: 4px 6px; flex:1;" onclick="setAsFinalPhoto('${photo.id}')">
+              Set Final ❤️
+            </button>
+            <button class="btn-secondary" style="font-size: 0.7rem; padding: 4px 6px; color:#EF4444;" onclick="deletePhoto('${photo.id}')">
+              🗑️
+            </button>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+
+      // Update final surprise image in Scene 8
+      const finalPhoto = appState.photos.find(p => p.isFinal);
+      const finalImg = document.getElementById("final-surprise-img");
+      if (finalPhoto) {
+        finalImg.src = finalPhoto.dataUrl;
+        finalImg.style.display = "block";
+      } else {
+        finalImg.removeAttribute("src");
+        finalImg.style.display = "none";
+      }
+    }
+
+    async function handlePhotoUpload(e) {
+      const files = Array.from(e.target.files);
+      if (!files.length) return;
+
+      const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+      for (const file of files) {
+        if (!allowedTypes.includes(file.type)) {
+          alert(`Skipped ${file.name}: please choose a JPG, PNG, WebP, or GIF image.`);
+          continue;
+        }
+        const reader = new FileReader();
+        reader.onload = async (evt) => {
+          try {
+            const newPhoto = {
+              id: "photo_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8),
+              name: file.name,
+              category: "couple",
+              caption: "Our beautiful moment",
+              dataUrl: evt.target.result,
+              isFinal: false
+            };
+            await savePhotoToDB(newPhoto);
+            appState.photos.push(newPhoto);
+            renderGallery();
+            renderPhotoManager();
+          } catch (err) {
+            console.error("Could not save photo", err);
+            alert(`Could not save ${file.name}. Try a smaller image or use a modern browser.`);
+          }
+        };
+        reader.onerror = () => alert(`Could not read ${file.name}. Please try again.`);
+        reader.readAsDataURL(file);
+      }
+      e.target.value = "";
+    }
+
+    async function updatePhotoCategory(id, category) {
+      const p = appState.photos.find(item => item.id === id);
+      if (p) {
+        p.category = category;
+        await savePhotoToDB(p);
+        renderGallery();
+      }
+    }
+
+    async function updatePhotoCaption(id, caption) {
+      const p = appState.photos.find(item => item.id === id);
+      if (p) {
+        p.caption = caption;
+        await savePhotoToDB(p);
+        renderGallery();
+      }
+    }
+
+    async function setAsFinalPhoto(id) {
+      appState.photos.forEach(p => p.isFinal = (p.id === id));
+      for (const p of appState.photos) {
+        await savePhotoToDB(p);
+      }
+      renderPhotoManager();
+      alert("Selected as your final surprise photograph! ❤️");
+    }
+
+    async function deletePhoto(id) {
+      if (confirm("Remove this photo from your gallery?")) {
+        appState.photos = appState.photos.filter(p => p.id !== id);
+        await removePhotoFromDB(id);
+        renderGallery();
+        renderPhotoManager();
+      }
+    }
+
+    function handleAudioUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          customAudio = new Audio(evt.target.result);
+          customAudio.loop = true;
+          alert("Audio track uploaded successfully! Press 🎵 to listen.");
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    /* =========================================================
+       8. LIGHTBOX & MODALS
+       ========================================================= */
+    function openLightbox(url, caption) {
+      document.getElementById("lightbox-img").src = url;
+      document.getElementById("lightbox-caption").textContent = caption;
+      document.getElementById("lightbox").classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+
+    document.getElementById("btn-editor-open").addEventListener("click", () => {
+      // Sync form values
+      document.getElementById("edit-husband-name").value = appState.config.husband;
+      document.getElementById("edit-wife-name").value = appState.config.wife;
+      document.getElementById("edit-letter-text").value = appState.config.letter;
+      document.getElementById("edit-envelope-text").value = appState.config.envelope;
+      document.getElementById("edit-final-text").value = appState.config.finalMsg;
+      renderPhotoManager();
+      document.getElementById("editor-modal").classList.add("active");
+    });
+
+    function closeEditor() {
+      document.getElementById("editor-modal").classList.remove("active");
+    }
+
+    function saveConfig() {
+      appState.config.husband = document.getElementById("edit-husband-name").value;
+      appState.config.wife = document.getElementById("edit-wife-name").value;
+      appState.config.letter = document.getElementById("edit-letter-text").value;
+      appState.config.envelope = document.getElementById("edit-envelope-text").value;
+      appState.config.finalMsg = document.getElementById("edit-final-text").value;
+
+      localStorage.setItem("anniversary_config", JSON.stringify(appState.config));
+      applyConfigToDOM();
+      closeEditor();
+      alert("Surprise configuration saved successfully! ❤️");
+    }
+
+    function applyConfigToDOM() {
+      document.getElementById("dyn-welcome-name").textContent = `Hey ${appState.config.husband}! ❤️`;
+      document.getElementById("dyn-letter-content").textContent = appState.config.letter;
+      document.getElementById("dyn-envelope-msg").innerHTML = appState.config.envelope.replace(/\n/g, "<br>");
+      document.getElementById("dyn-final-msg").textContent = appState.config.finalMsg;
+    }
+
+    function toggleViewerMode() {
+      appState.viewerMode = !appState.viewerMode;
+      document.getElementById("btn-editor-open").style.display = appState.viewerMode ? "none" : "flex";
+      closeEditor();
+      restartExperience();
+      if (appState.viewerMode) {
+        alert("Viewer Mode Activated!\n\nThis is the exact clean experience Udai will see. Tap anywhere at the very bottom right 3 times rapidly if you wish to exit viewer mode.");
+      }
+    }
+
+    // Secret gesture to exit viewer mode if testing
+    let secretTapCount = 0;
+    window.addEventListener("click", (e) => {
+      if (e.clientX > window.innerWidth - 60 && e.clientY > window.innerHeight - 60) {
+        secretTapCount++;
+        if (secretTapCount >= 3) {
+          appState.viewerMode = false;
+          document.getElementById("btn-editor-open").style.display = "flex";
+          secretTapCount = 0;
+          alert("Editor mode restored!");
+        }
+      }
+    });
+
+    function exportDataBundle() {
+      const bundle = {
+        config: appState.config,
+        photos: appState.photos
+      };
+      const blob = new Blob([JSON.stringify(bundle)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `Vineetha_Udai_Anniversary_Backup.json`;
+      a.click();
+    }
+
+    /* =========================================================
+       9. CONFETTI BURST EFFECT
+       ========================================================= */
+    function triggerMiniConfetti() {
+      for (let i = 0; i < 18; i++) {
+        const p = new HeartParticle();
+        p.x = canvas.width / 2 + (Math.random() - 0.5) * 160;
+        p.y = canvas.height / 2 + (Math.random() - 0.5) * 160;
+        p.speedY = (Math.random() - 0.5) * 4;
+        p.speedX = (Math.random() - 0.5) * 4;
+        particles.push(p);
+      }
+      setTimeout(() => {
+        particles = particles.slice(0, 24);
+      }, 1500);
+    }
+
+    /* =========================================================
+       10. APPLICATION INITIALIZATION
+       ========================================================= */
+    async function initApp() {
+      // 1. Load configuration from localStorage
+      const savedConfig = localStorage.getItem("anniversary_config");
+      if (savedConfig) {
+        try {
+          appState.config = JSON.parse(savedConfig);
+        } catch (e) {
+          console.error("Config parse error", e);
+        }
+      }
+      applyConfigToDOM();
+
+      // 2. Load photos previously added through the editor from IndexedDB.
+      try {
+        const storedPhotos = await loadAllPhotosFromDB();
+        if (storedPhotos && storedPhotos.length > 0) appState.photos = storedPhotos;
+      } catch (err) {
+        console.warn("IndexedDB load notice", err);
+      }
+
+      // 3. Load original image files placed beside index.html.
+      // Keep their names unchanged. Try common extensions because Windows may hide them.
+      const bundledImages = [
+        { base: "msg", category: "couple", caption: "A beautiful memory" },
+        { base: "couple1", category: "couple", caption: "Us, always ❤️" },
+        { base: "couple2", category: "couple", caption: "One of my favorite moments" },
+        { base: "couple3", category: "couple", caption: "Another page in our story" },
+        { base: "couple4", category: "couple", caption: "A beautiful memory" },
+        { base: "illustration", category: "decor", caption: "A little illustration" },
+        { base: "illustrationb2", category: "decor", caption: "A little illustration" }
+      ];
+      const extensions = [".jpg", ".jpeg", ".JPG", ".JPEG", ".png", ".PNG", ".webp", ".WEBP"];
+      const checkImage = (url) => new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
+      for (const item of bundledImages) {
+        const id = "asset_" + item.base;
+        if (appState.photos.some(p => p.id === id)) continue;
+        let foundPath = null;
+        for (const ext of extensions) {
+          const candidate = item.base + ext;
+          if (await checkImage(candidate)) {
+            foundPath = candidate;
+            break;
+          }
+        }
+        if (foundPath) {
+          appState.photos.push({
+            id,
+            name: foundPath,
+            category: item.category,
+            caption: item.caption,
+            dataUrl: foundPath,
+            isFinal: false,
+            bundled: true
+          });
+        }
+      }
+
+      // Never automatically choose a final photo. The owner selects it explicitly.
+      appState.photos.forEach(p => { if (p.bundled) p.isFinal = false; });
+
+      // 4. Render gallery & setup
+      renderGallery();
+      renderPhotoManager();
+      updateProgressBar();
+
+      // Check URL parameters for view mode
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("mode") === "view") {
+        appState.viewerMode = true;
+        document.getElementById("btn-editor-open").style.display = "none";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+</html>
